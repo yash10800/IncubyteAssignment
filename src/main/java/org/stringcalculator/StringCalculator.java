@@ -5,7 +5,7 @@ import java.util.List;
 public class StringCalculator {
 
     public static int add(final String input){
-        final String nonSpacedString = input.replaceAll("\\s", "");
+        final String nonSpacedString = input.replaceAll(" ", "");
         final InputExpression inputExpression = new InputExpression(nonSpacedString);
         if (inputExpression.isEmpty()) {
             return 0;
