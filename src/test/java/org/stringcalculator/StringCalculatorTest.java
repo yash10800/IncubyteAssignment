@@ -98,8 +98,16 @@ public class StringCalculatorTest {
 
         add("//;\n-2;-1;3;-4;5");
     }
+    
+    @Test
+    public void invalid() throws Exception {
+        expectedException.expect(NumberFormatException.class);
 
-    private int add(final String input) throws NegativeNumberNotSupportedException{
+        add("//;\n1;;2");
+        add("//[***][**]\n1*****2");
+    }
+
+    private int add(final String input) throws NegativeNumberNotSupportedException,NumberFormatException{
         return StringCalculator.add(input);
     }
 
