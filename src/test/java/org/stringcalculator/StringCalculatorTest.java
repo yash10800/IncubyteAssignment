@@ -27,6 +27,13 @@ public class StringCalculatorTest {
         assertThat(add("100 , 100"), is(200));
     }
 
+    @Test
+    public void add_given_numbers_should_return_the_sum() throws Exception {
+        assertThat(add("1,2,3"), is(6));
+        assertThat(add("1,1,1,1"), is(4));
+        assertThat(add("1 , 1 , 1 , 1 , 1"), is(5));
+    }
+
     private int add(final String input){
         return StringCalculator.add(input);
     }
