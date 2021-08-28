@@ -47,6 +47,16 @@ public class StringCalculatorTest {
         assertThat(add("100,1000"), is(1100));
     }
 
+    @Test
+    public void add_given_specific_separator_should_return_the_sum() throws Exception {
+        assertThat(add("//;\n2;1"), is(3));
+        assertThat(add("//*\n2*1"), is(3));
+        assertThat(add("//#\n2#1"), is(3));
+        assertThat(add("//#\n2"), is(2));
+        assertThat(add("//#\n2#1#1"), is(4));
+        assertThat(add("//$\n2 $ 1 $ 1"), is(4));
+    }
+
     private int add(final String input){
         return StringCalculator.add(input);
     }

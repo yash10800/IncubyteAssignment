@@ -22,11 +22,29 @@ public class InputExpression {
     }
 
     private DelimitersExpression getDelimitersExpression() {
+        if (!hasCustomSeparator()) {
             return new DelimitersExpression("");
+        }
+        return new DelimitersExpression(expression.substring(getBeginDelimitersIndex(), getEndDelimitersIndex()));
+    }
+
+    private boolean hasCustomSeparator() {
+        return expression.startsWith(START_DELIMITERS_EXPRESSION);
+    }
+
+    private int getEndDelimitersIndex() {
+        return expression.indexOf(END_DELIMITERS_EXPRESSION);
+    }
+
+    private int getBeginDelimitersIndex() {
+        return expression.indexOf(START_DELIMITERS_EXPRESSION) + START_DELIMITERS_EXPRESSION.length();
     }
 
     private NumbersExpression getNumberExpression() {
+        if (!hasCustomSeparator()) {
             return new NumbersExpression(expression);
+        }
+        return new NumbersExpression(expression.substring(getEndDelimitersIndex() + 1));
     }
 
     public List<Integer> getNumbers() {
