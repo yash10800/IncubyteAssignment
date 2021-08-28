@@ -40,6 +40,13 @@ public class StringCalculatorTest {
         assertThat(add("1\n1\n1"), is(3));
     }
 
+    @Test
+    public void add_should_ignore_numbers_greater_than_one_thousand() throws Exception {
+        assertThat(add("1,1001"), is(1));
+        assertThat(add("1002,1001"), is(0));
+        assertThat(add("100,1000"), is(1100));
+    }
+
     private int add(final String input){
         return StringCalculator.add(input);
     }
