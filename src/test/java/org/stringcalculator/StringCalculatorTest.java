@@ -57,6 +57,17 @@ public class StringCalculatorTest {
         assertThat(add("//$\n2 $ 1 $ 1"), is(4));
     }
 
+    @Test
+    public void add_given_specific_separator_of_any_length_should_return_the_sum() throws Exception {
+        assertThat(add("//##\n2##1"), is(3));
+        assertThat(add("//[##]\n2##1"), is(3));
+        assertThat(add("//#.#\n2#.#1"), is(3));
+        assertThat(add("//[#.#]\n2#.#1"), is(3));
+        assertThat(add("//#.#\n2#.#1#.#1"), is(4));
+        assertThat(add("//[#.#]\n2#.#1#.#1"), is(4));
+    }
+
+
     private int add(final String input){
         return StringCalculator.add(input);
     }
