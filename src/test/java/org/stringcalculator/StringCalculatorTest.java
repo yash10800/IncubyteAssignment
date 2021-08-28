@@ -67,6 +67,14 @@ public class StringCalculatorTest {
         assertThat(add("//[#.#]\n2#.#1#.#1"), is(4));
     }
 
+    @Test
+    public void add_given_multiple_separators_should_return_the_sum() throws Exception {
+        assertThat(add("//[*][%]\n2*1"), is(3));
+        assertThat(add("//[*][%]\n1*1%1"), is(3));
+        assertThat(add("//[*][%][!]\n1*1%1"), is(3));
+        assertThat(add("//[*][%%][!]\n1*1%%1!1*1"), is(5));
+        assertThat(add("//[*][% %][!]\n1*1% %1!1*1"), is(5));
+    }
 
     private int add(final String input){
         return StringCalculator.add(input);
