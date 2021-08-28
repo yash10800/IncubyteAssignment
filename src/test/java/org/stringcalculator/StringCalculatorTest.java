@@ -1,10 +1,17 @@
 package org.stringcalculator;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
+
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
 public class StringCalculatorTest {
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none(); 
 
    @Test
    public void add_given_empty_string_should_return_zero() throws Exception {
@@ -76,7 +83,15 @@ public class StringCalculatorTest {
         assertThat(add("//[*][% %][!]\n1*1% %1!1*1"), is(5));
     }
 
-    private int add(final String input){
+    @Test
+    public void add_given_one_negative_number_should_throw_exception() throws Exception {
+        expectedException.expect(NegativeNumberNotSupportedException.class);
+        expectedException.expectMessage("Negatives are not allowed: -1");
+
+        add("//;\n2;-1");
+    }
+
+    private int add(final String input) throws NegativeNumberNotSupportedException{
         return StringCalculator.add(input);
     }
 

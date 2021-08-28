@@ -23,4 +23,5 @@ public class NumbersExpression {
         final String regex = delimiters.stream().map(delimiter -> Pattern.quote(delimiter)).collect(Collectors.joining("|"));
         return Stream.of(expression.split(regex)).collect(Collectors.toList());
     }
+
 }

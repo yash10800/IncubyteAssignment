@@ -29,4 +29,5 @@ public class DelimitersExpression {
     private String removeSeparatorContainer(final String separator) {
         return separator.replace(START_DELIMITER_CONTAINER, "").replace(END_DELIMITER_CONTAINER, "");
     }
+
 }
