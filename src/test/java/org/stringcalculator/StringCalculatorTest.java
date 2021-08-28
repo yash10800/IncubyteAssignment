@@ -11,11 +11,20 @@ public class StringCalculatorTest {
         assertThat(add(""), is(0));
         assertThat(add("   "), is(0));
     }
+    
     @Test
     public void add_given_one_number_should_return_the_number() throws Exception {
         assertThat(add("1"), is(1));
         assertThat(add("2"), is(2));
         assertThat(add(" 3 "), is(3));
+    }
+
+    @Test
+    public void add_given_two_numbers_should_return_the_sum() throws Exception {
+        assertThat(add("1,2"), is(3));
+        assertThat(add("4,6"), is(10));
+        assertThat(add("4, 12"), is(16));
+        assertThat(add("100 , 100"), is(200));
     }
 
     private int add(final String input){
