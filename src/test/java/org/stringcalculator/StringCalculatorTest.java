@@ -91,6 +91,14 @@ public class StringCalculatorTest {
         add("//;\n2;-1");
     }
 
+    @Test
+    public void add_given_several_negative_numbers_should_throw_exception() throws Exception {
+        expectedException.expect(NegativeNumberNotSupportedException.class);
+        expectedException.expectMessage("Negatives are not allowed: -2, -1, -4");
+
+        add("//;\n-2;-1;3;-4;5");
+    }
+
     private int add(final String input) throws NegativeNumberNotSupportedException{
         return StringCalculator.add(input);
     }
