@@ -1,8 +1,10 @@
 package org.stringcalculator;
 
+import org.junit.AfterClass;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.stringcalculator.StringCalculator;
 
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -105,6 +107,11 @@ public class StringCalculatorTest {
 
         add("//;\n1;;2");
         add("//[***][**]\n1*****2");
+    }
+    
+    @AfterClass
+    public static void count() {
+    	System.out.println("Number of times add method invocked: "+StringCalculator.getCalledCount());
     }
 
     private int add(final String input) throws NegativeNumberNotSupportedException,NumberFormatException{
